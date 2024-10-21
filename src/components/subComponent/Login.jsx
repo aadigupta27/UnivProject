@@ -4,14 +4,53 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
 
     const [deptId, setdeptId] = useState("");
-    const [Password, setPassword] = useState("");
-
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState(""); // To store error messages
+  
     const navigate = useNavigate();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        navigate(`/${deptId}`)
-    }
+        // navigate(`/${deptId}`)
+
+        console.log("Department ID: ", deptId); // Log deptId for debugging
+        console.log("Password: ", password); // Log password for debugging
+    
+        try {
+          const response = await fetch(
+            "http://localhost:8080/api/login/check_login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                login_id: deptId,
+                password: password,
+              }),
+            }
+          );
+          if (response.ok) {
+            // Assuming successful login
+            const loginId = await response.text();
+            console.log("Login successful for department: ", loginId); // Log successful login
+            navigate(`/${deptId}`);
+          } else if (response.status === 401) {
+            setErrorMessage("Invalid password. Please try again.");
+            alert('Please Enter valid password !')
+          } else if (response.status === 404) {
+            setErrorMessage("Department ID not found.");
+            alert('Please Enter Valid Department Id !')
+          } else {
+            setErrorMessage("An unexpected error occurred. Please try again.");
+          }
+        } catch (error) {
+          console.error("Error during login:", error);
+          setErrorMessage(
+            "Unable to connect to the server. Please try again later."
+          );
+        }
+      };
 
     return (
 
@@ -41,7 +80,7 @@ function Login() {
                         placeholder="Password"
                         className='appearance-none caret-gray-400 relative block w-full px-3 py-2 border  bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:ring-gray-400 focus:border-gray-400 focus:z-10 sm:text-sm'
                         required=""
-                        value={Password}
+                        value={password}
                         onChange={(e) => {setPassword(e.target.value)}}
                         type="password"
                         />
@@ -60,11 +99,10 @@ function Login() {
                 </div>
 
             </div>
-
-            <div></div>
             </div>
 
     )
 }
+
 
 export default Login
