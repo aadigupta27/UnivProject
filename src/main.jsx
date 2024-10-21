@@ -5,9 +5,11 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from './components/layout.jsx'
 import Home from './components/Home.jsx'
 import IETdashboard from './components/subComponent/IET/IETdashboard.jsx'
-import IIPSdept from './components/IIPSdept.jsx'
-import IMSdept from './components/IMSdept.jsx'
+import IIPSdept from './components/subComponent/IIPS/IIPSdept.jsx'
+import IMSdept from './components/subComponent/IMS/IMSdept.jsx'
 import IETforms from './components/subComponent/IET/IETforms.jsx'
+import IIPSforms from './components/subComponent/IIPS/IIPSforms.jsx'
+import IMSforms from './components/subComponent/IMS/IMSforms.jsx'
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,8 +18,12 @@ const Router = createBrowserRouter(
       <Route path='iet@123' element={<IETdashboard/>}>
         <Route path='form' element={<IETforms />} />
       </Route>
-      <Route path='iips@123' element={<IIPSdept/>} />
-      <Route path='ims@123' element={<IMSdept/>} />
+      <Route path='iips@123' element={<IIPSdept/>}>
+        <Route path='form' element={<IIPSforms/>} />
+      </Route>
+      <Route path='ims@123' element={<IMSdept/>}>
+        <Route path='form' element={<IMSforms/>}/>
+      </Route>
     </Route>
   )
 )

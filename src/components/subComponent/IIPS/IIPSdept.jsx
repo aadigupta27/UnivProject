@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function IIPSdept() {
+    const formNavi = useNavigate();
 
     const formHandler = () => {
-        
+        formNavi('/iips@123/form')
     }
     return (
         <>

@@ -1,9 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function IMSdept() {
 
-    const formHandler = () => {
+    const formNavi = useNavigate();
 
+    const formHandler = () => {
+        formNavi('/ims@123/form')
     }
     return (
         <>
