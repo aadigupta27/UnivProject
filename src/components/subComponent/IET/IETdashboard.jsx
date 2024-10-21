@@ -4,17 +4,22 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 function IETdashboard() {
 
     const formNav = useNavigate();
+
     const formHandler = () => {
         formNav('/iet@123/form')
+    }
+    const responseHandler = () => {
+        formNav('/iet@123/form/response')
     }
 
     return (
         <>
             <div>
-                <div className='flex bg-gray-800 justify-between items-center p-6 '>
+
+                <div className='flex bg-gray-800 justify-between items-center p-6 sticky z-60 top-0'>
                     <h1 className='text-2xl text-white'> Institute of Engineering and Technology, Indore</h1>
                     <div className='flex justify-end items-end'>
-                        <button className='group relative w-auto flex justify-center py-1 px-2 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600'>My Responses</button>
+                        <button onClick={responseHandler} className='group relative w-auto flex justify-center py-1 px-2 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600'>My Responses</button>
                     </div>
                 </div>
 
@@ -44,6 +49,7 @@ function IETdashboard() {
                     </div>
                    
                 </div>
+
             </div>
         </>
     )

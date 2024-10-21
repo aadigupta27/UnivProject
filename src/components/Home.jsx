@@ -4,9 +4,8 @@ import Login from './subComponent/Login'
 function Home() {
     return (
 
-        <div className=' box-border p-0 m-0 h-full w-full overflow-x-hidden overflow-y-hidden'>
-
-            <div className=''>
+        <div className='m-0 p-0 h-1/2'>
+            <div className='h-2/3'>
                 <div className='flex justify-center gap-11 items-center bg-slate-200 p-8 '>
                     <div className='w-1/2 flex justify-center items-center'>
                     

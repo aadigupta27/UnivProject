@@ -7,13 +7,16 @@ function IIPSdept() {
     const formHandler = () => {
         formNavi('/iips@123/form')
     }
+    const responseHandler = () => {
+        formNavi('/iips@123/form/response')
+    }
     return (
         <>
             <div>
                 <div className='flex bg-gray-800 justify-between items-center p-6 '>
                     <h1 className='text-2xl text-white'> International Institute of Professional Studies, Indore</h1>
                     <div className='flex justify-end items-end'>
-                        <button className='group relative w-auto flex justify-center py-1 px-2 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600'>My Responses</button>
+                        <button onClick={responseHandler} className='group relative w-auto flex justify-center py-1 px-2 border border-transparent text-md font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600'>My Responses</button>
                     </div>
                 </div>
 
