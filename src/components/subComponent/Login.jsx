@@ -11,7 +11,7 @@ function Login() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        // navigate(`/${deptId}`)
+        navigate(`/${deptId}`)
 
         console.log("Department ID: ", deptId); // Log deptId for debugging
         console.log("Password: ", password); // Log password for debugging

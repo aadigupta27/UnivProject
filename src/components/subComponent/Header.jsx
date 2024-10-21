@@ -8,7 +8,7 @@ function Header() {
                 <h1 className='text-3xl font-semibold text-white flex justify-center'> Devi Ahilya Vishwavidyalaya, Indore</h1>
                 <img 
                     className='h-24 w-20 rounded-full'
-                    src='./src/devi_ahilya_photo.jpg'/>
+                    src='https://en-media.thebetterindia.com/uploads/2017/10/Maharani_Ahilya_Bai_Holkar.png' alt='image'/>
             </div>
         </div> 
     )
