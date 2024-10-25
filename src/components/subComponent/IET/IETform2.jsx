@@ -7,7 +7,7 @@ const IETform2 = () => {
 
   // Function to add a new row
   const addRow = () => {
-    setRows([...rows, { id: nextId, progName: "", progCode: "", sra: "" }]);
+    setRows([...rows, { id: nextId, progName: "", Intake24: "", Admission24: "", Intake23: "", Admission23: "" }]);
     setNextId(nextId + 1);
   };
 
@@ -38,43 +38,63 @@ const IETform2 = () => {
           <tr>
             <th className="px-4 py-2 border text-gray-800  text-lg">SN</th>
             <th className="px-4 py-2 border text-gray-800 text-lg">Prog_name</th>
-            <th className="px-4 py-2 border text-gray-800 text-lg">Prog_code</th>
-            <th className="px-4 py-2 border text-gray-800 text-lg">SRA</th>
+            <th className="px-4 py-2 border text-gray-800 text-lg">Intake_24</th>
+            <th className="px-4 py-2 border text-gray-800 text-lg">Admission_24</th>
+            <th className="px-4 py-2 border text-gray-800 text-lg">Intake_23</th>
+            <th className="px-4 py-2 border text-gray-800 text-lg">Admission_23</th>
             <th className="px-4 py-2 border text-gray-800 text-lg">Actions</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row, index) => (
             <tr key={row.id}>
-              <td className="px-4 py-2 border">{index + 1}</td>
-              <td className="px-4 py-2 border">
+              <td className="px-2 py-2 border">{index + 1}</td>
+              <td className="px-2 py-2 border">
                 <input
                   type="text"
                   value={row.progName}
                   onChange={(e) => handleRowChange(index, "progName", e.target.value)}
-                  className=" rounded-md px-8 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
+                  className=" rounded-md px-3 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
+                  spellCheck = {false}
+                />
+              </td>
+              <td className="px-2 py-2 border">
+                <input
+                  type="number"
+                  value={row.Intake24}
+                  onChange={(e) => handleRowChange(index, "Intake24", e.target.value)}
+                  className=" rounded-md px-3 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
+                  spellCheck = {false}
+                />
+              </td>
+              <td className="px-2 py-2 border">
+                <input
+                  type="number"
+                  value={row.Admission24}
+                  onChange={(e) => handleRowChange(index, "Admission24", e.target.value)}
+                  className=" rounded-md px-3 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
+                  spellCheck = {false}
+                />
+              </td>
+              <td className="px-2 py-2 border">
+                <input
+                  type="number"
+                  value={row.Intake23}
+                  onChange={(e) => handleRowChange(index, "Intake23", e.target.value)}
+                  className=" rounded-md px-3 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
                   spellCheck = {false}
                 />
               </td>
               <td className="px-4 py-2 border">
                 <input
-                  type="text"
-                  value={row.progCode}
-                  onChange={(e) => handleRowChange(index, "progCode", e.target.value)}
-                  className=" rounded-md px-8 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
+                  type="number"
+                  value={row.Admission23}
+                  onChange={(e) => handleRowChange(index, "Admission23", e.target.value)}
+                  className=" rounded-md px-3 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
                   spellCheck = {false}
                 />
               </td>
-              <td className="px-4 py-2 border">
-                <input
-                  type="text"
-                  value={row.sra}
-                  onChange={(e) => handleRowChange(index, "sra", e.target.value)}
-                  className=" rounded-md px-8 py-1 outline-slate-300  text-gray-800 text-md font-semibold"
-                  spellCheck = {false}
-                />
-              </td>
-              <td className="px-4 py-2 border">
+              <td className="px-2 py-2 border">
                 <button onClick={() => deleteRow(row.id)} className="bg-red-500 text-white px-3 py-1 rounded-md outline-red-800">
                   Delete
                 </button>
