@@ -5,8 +5,20 @@ function IETdashboard() {
 
     const formNav = useNavigate();
 
-    const formHandler = () => {
-        formNav('/iet@123/form')
+    const formHandler1 = () => {
+        formNav('/iet@123/form1')
+    }
+    const formHandler2 = () => {
+        formNav('/iet@123/form2')
+    }
+    const formHandler3 = () => {
+        formNav('/iet@123/form3')
+    }
+    const formHandler4 = () => {
+        formNav('/iet@123/form4')
+    }
+    const formHandler5 = () => {
+        formNav('/iet@123/form5')
     }
     const responseHandler = () => {
         formNav('/iet@123/form/response')
@@ -30,7 +42,7 @@ function IETdashboard() {
                     <h2 className="text-2xl font-semibold mb-4 text-start ml-4 text-gray-700">Profile</h2>
                     <div className="flex space-x-3 justify-start shadow-lg p-4">
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button onClick={formHandler} className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-700">
+                            <button onClick={formHandler1} className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-700">
                                 Form-1
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
@@ -38,7 +50,7 @@ function IETdashboard() {
                             </button>
                         </div>
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
+                            <button onClick={formHandler2} className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
                                 Form-2
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
@@ -46,7 +58,7 @@ function IETdashboard() {
                             </button>
                         </div>
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
+                            <button onClick={formHandler3} className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
                                 Form-3
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
@@ -54,7 +66,7 @@ function IETdashboard() {
                             </button>
                         </div>
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
+                            <button onClick={formHandler4} className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
                                 Form-4
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
@@ -62,7 +74,7 @@ function IETdashboard() {
                             </button>
                         </div>
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
+                            <button onClick={formHandler5} className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
                                 Form-5
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
@@ -76,7 +88,7 @@ function IETdashboard() {
                     <h2 className="text-2xl font-semibold mb-4 text-start ml-4 text-gray-700">Research and Development</h2>
                     <div className="flex space-x-3 justify-start shadow-lg p-4">
                         <div className='flex flex-col gap-3 bg-white p-4'>
-                            <button onClick={formHandler} className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
+                            <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-700">
                                 Form-1
                             </button>
                             <button className="bg-blue-500 text-white py-1 px-4 rounded-full hover:bg-blue-700">
