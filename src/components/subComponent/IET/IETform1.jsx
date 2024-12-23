@@ -73,6 +73,55 @@ const IETform1 = () => {
     }
   };
 
+  // Function to export data as CSV
+  const exportToCSV = () => {
+    // Define CSV column headers
+    const headers = ["SN", "Prog_name", "Prog_code", "SRA"];
+    const rowsToExport = rows.map((row) => [
+      row.sn,
+      row.progName,
+      row.progCode,
+      row.sra,
+    ]);
+
+    // Create CSV content
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      [headers, ...rowsToExport].map((e) => e.join(",")).join("\n");
+
+    // Create and trigger download
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "ProgramData.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Function to handle file upload and import CSV data
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const csvData = e.target.result;
+      const lines = csvData.split("\n");
+      const result = [];
+
+      // Parse CSV data and log it to console
+      lines.slice(1).forEach((line) => {
+        const [sn, progName, progCode, sra] = line.split(",");
+        if (progName && progCode && sra) {
+          result.push({ sn, progName, progCode, sra });
+        }
+      });
+      console.log("Imported CSV Data:", result);
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div className="container">
       <h2 className="text-center text-2xl font-semibold mt-6 mb-6 text-gray-700">
@@ -155,6 +204,19 @@ const IETform1 = () => {
         >
           Save
         </button>
+        <button
+          onClick={exportToCSV}
+          className="bg-yellow-500 text-white px-3 py-1 ml-2 rounded-md outline-yellow-800"
+        >
+          Export as CSV
+        </button>
+        <input
+          type="files"
+          accept=".csv"
+          onChange={handleFileUpload}
+          className="ml-4 mt-2"
+        />
+        <span className="ml-2 text-gray-700 text-md">Import CSV</span>
       </div>
     </div>
   );
