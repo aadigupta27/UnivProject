@@ -211,7 +211,7 @@ const IETform1 = () => {
           Export as CSV
         </button>
         <input
-          type="files"
+          type="file"
           accept=".csv"
           onChange={handleFileUpload}
           className="ml-4 mt-2"
