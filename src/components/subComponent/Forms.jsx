@@ -8,6 +8,7 @@ function Forms() {
 
     //fetch data form the API on component mounting
     const apiURL = "http://localhost:8080/api/login/check";
+
     useEffect(()=>{
         const fetchData = async() => {
             try{
@@ -38,7 +39,7 @@ function Forms() {
                             value: "", // initialize the new row fields as empty
                         })),
                     };
-                    setNextRowId(nextRowId+1); // update row id
+                    setNextRowId((prevId) => prevId + 1); // update row id
                     return {...form, rows: [...form.rows, newRow]}
                 }
                 return form;
@@ -48,7 +49,7 @@ function Forms() {
 
     //function to handle field change
 
-    const handleFormChange = (formId, fieldId, rowId, value) => {
+    const handleFieldChange = (formId, fieldId, rowId, value) => {
         setForms((prevForms) => prevForms.map((form) => {
             if(form.form_id === formId){
                 const updateRows = form.rows.map((row)=>{

@@ -44,13 +44,15 @@ function Dashboard() {
     fetchApiData();
   }, []);
 
-  const formHandler = (formId) => navigate(`/id/${formId}`);
 
   if (!instituteData) {
     return <div>Loading...</div>; // Add a loading state
   }
 
-  const { name, forms } = instituteData;
+  const { name, id, forms } = instituteData;
+
+  const formHandler = (formId) => navigate(`/${id}/${formId}`);
+
 
   return (
     <>
