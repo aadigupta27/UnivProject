@@ -6,6 +6,7 @@ import Layout from './components/layout.jsx';
 import Home from './components/Home.jsx';
 import Dashboard from './components/subComponent/Dashboard.jsx';
 import Forms from './components/subComponent/Forms.jsx';
+import { AppProvider } from './components/subComponent/AppContext.jsx';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,8 @@ const Router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={Router} />
+    <AppProvider>
+      <RouterProvider router={Router} /> 
+    </AppProvider>
   </StrictMode>
 );
