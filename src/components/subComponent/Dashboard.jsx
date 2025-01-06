@@ -15,6 +15,10 @@ function Dashboard() {
     return <div>Error: {error}</div>;
   }
 
+  if (!instituteData || !instituteData.forms?.length) {
+    return <div>No forms available.</div>;
+  }
+
   const { name, id, forms } = instituteData;
 
   const formHandler = (formId) => navigate(`/${id}/${formId}`);

@@ -3,15 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "./AppContext";
 
 function Login() {
-  const [deptId, setdeptId] = useState("");
+  const [deptId, setDeptId] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
-  const { instituteData, isLoading, error } = useContext(AppContext);
+  const { isLoading, error } = useContext(AppContext);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    if (!deptId || !password) {
+      setErrorMessage("Both fields are required.");
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:8080/api/login/check_login", {
@@ -30,6 +35,7 @@ function Login() {
         setErrorMessage("An unexpected error occurred. Please try again.");
       }
     } catch (err) {
+      console.error("Login Error:", err.message);
       setErrorMessage("Unable to connect to the server. Please try again later.");
     }
   };
@@ -55,17 +61,17 @@ function Login() {
           <form onSubmit={submitHandler} className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm">
               <input
-                placeholder="Department Id"
+                placeholder="Department ID"
                 className="appearance-none caret-gray-400 relative block w-full px-3 py-2 border bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:ring-gray-400 focus:border-gray-400 focus:z-10 sm:text-sm"
                 type="text"
                 spellCheck={false}
                 value={deptId}
-                onChange={(e) => setdeptId(e.target.value)}
+                onChange={(e) => setDeptId(e.target.value)}
               />
               <input
                 placeholder="Password"
                 className="appearance-none caret-gray-400 relative block w-full px-3 py-2 border bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:ring-gray-400 focus:border-gray-400 focus:z-10 sm:text-sm mt-3"
-                required=""
+                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
