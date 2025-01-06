@@ -19,13 +19,15 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/login/check_login", {
+      const response = await fetch("http://localhost:8080/api/login/check", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ login_id: deptId, password }),
       });
 
       if (response.ok) {
+        const data = await response.json();
+        console.log("Response Data:", data);
         navigate(`/${deptId}`);
       } else if (response.status === 401) {
         setErrorMessage("Invalid password. Please try again.");
@@ -36,7 +38,9 @@ function Login() {
       }
     } catch (err) {
       console.error("Login Error:", err.message);
-      setErrorMessage("Unable to connect to the server. Please try again later.");
+      setErrorMessage(
+        "Unable to connect to the server. Please try again later."
+      );
     }
   };
 
